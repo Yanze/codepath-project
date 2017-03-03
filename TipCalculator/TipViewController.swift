@@ -40,6 +40,7 @@ class TipViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        checkAmountTextField.becomeFirstResponder()
         guard let isDarkthem = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
             return
         }

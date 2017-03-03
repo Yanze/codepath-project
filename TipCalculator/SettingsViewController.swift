@@ -56,7 +56,8 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
             if amountShouldPay == nil {
                 amountShouldPay = "0"
             }
-            controller.body = "Hi, this is a friendly reminder: Don't forget to pay back $\(amountShouldPay!) to your friend."
+            let needToPay = String(format: "%.2f", Float(amountShouldPay!)!)
+            controller.body = "Hi, this is a friendly reminder: Don't forget to pay back $\(needToPay) to your friend."
             self.present(controller, animated: true, completion: nil)
 
         }
