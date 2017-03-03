@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import Instabug
 
 class SettingsViewController: UITableViewController, MFMessageComposeViewControllerDelegate {
     
@@ -39,6 +40,11 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
     
     @IBAction func sendingTextMessage(_ sender: UIButton) {
         createTextMessage()
+    }
+    
+    
+    @IBAction func reportBug(_ sender: UIButton) {
+        Instabug.invoke(with: IBGInvocationMode.newBug)
     }
     
     
