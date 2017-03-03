@@ -34,13 +34,16 @@ class TipViewController: UIViewController {
         checkAmountTextField.becomeFirstResponder()
         loadData()
         animateTextfieldBgc()
-
+        resetTheme()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UserDefaults.standard.object(forKey: "isDarkTheme") as! Bool  ? setDarkTheme() : resetTheme()
+        guard let isDarkthem = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
+            return
+        }
+        isDarkthem  ? setDarkTheme() : resetTheme()
     }
     
     func setDarkTheme() {

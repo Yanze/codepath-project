@@ -17,13 +17,26 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Settings"
-        (UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool)! ? isDarkTheme.setOn(true, animated: true) : isDarkTheme.setOn(false, animated: true)
+        guard let isDarkthem = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
+            return
+        }
+        isDarkthem ? isDarkTheme.setOn(true, animated: true) : isDarkTheme.setOn(false, animated: true)
         tableView.allowsSelection = false
+        adjustBackButtonColor()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool)! {
+        adjustBackButtonColor()
+        
+    }
+    
+    func adjustBackButtonColor() {
+        guard let isDarkthem = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
+            return
+        }
+        
+        if isDarkthem {
             navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
             navigationController?.navigationBar.tintColor = UIColor.white
             
@@ -43,7 +56,7 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
             if amountShouldPay == nil {
                 amountShouldPay = "0"
             }
-            controller.body = "Hi, You should give back $\(amountShouldPay!) to your friend(example message)"
+            controller.body = "Hi, this is a friendly reminder: Don't forget to pay back $\(amountShouldPay!) to your friend."
             self.present(controller, animated: true, completion: nil)
 
         }
