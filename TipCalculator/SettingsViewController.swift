@@ -43,7 +43,6 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
             if amountShouldPay == nil {
                 amountShouldPay = "0"
             }
-            
             controller.body = "Hi, You should give back $\(amountShouldPay!) to your friend(example message)"
             self.present(controller, animated: true, completion: nil)
 

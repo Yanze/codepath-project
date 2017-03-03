@@ -34,6 +34,7 @@ class TipViewController: UIViewController {
         checkAmountTextField.becomeFirstResponder()
         loadData()
         animateTextfieldBgc()
+
         
     }
     
@@ -62,7 +63,7 @@ class TipViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .darkGray
         settingButton.image = settingButton.image?.withRenderingMode(.alwaysTemplate)
         settingButton.tintColor = .white
-
+        checkAmountTextField.textColor = .white
     }
     
     func resetTheme() {
@@ -83,9 +84,10 @@ class TipViewController: UIViewController {
         totalPPerson.textColor = .black
         
         navigationController?.navigationBar.barTintColor = .white
-//        UINavigationBar.appearance().tintColor = .darkGray
+        UINavigationBar.appearance().tintColor = .darkGray
         settingButton.image = settingButton.image?.withRenderingMode(.alwaysTemplate)
         settingButton.tintColor = .darkGray
+        checkAmountTextField.textColor = .white
     }
     
     func loadData() {
@@ -128,7 +130,7 @@ class TipViewController: UIViewController {
             totalToPayLabel.text = String(format: "$%.2f", total)
             
             let totalPerPerson = total / (numPeople as! Double)
-            RecentCalculateData.instance.totalPerPersonToPay = String(format: "$%.2f", totalPerPerson)
+            RecentCalculateData.instance.totalPerPersonToPay = String(format: "%.2f", totalPerPerson)
             totalPerPersonLabel.text = String(format: "$%.2f", totalPerPerson)
             
         }
@@ -184,9 +186,10 @@ class TipViewController: UIViewController {
         
         animateTextfieldBgc()
         
-        RecentCalculateData.instance.checkAmount = Float(checkAmountTextField.text!)
+        RecentCalculateData.instance.checkAmount = Float(checkAmount)
         RecentCalculateData.instance.tipPercentageIndex = tipPercentageControl.selectedSegmentIndex
         RecentCalculateData.instance.numberOfPeople = Int(numOfPeopleSlider.value)
+        RecentCalculateData.instance.totalPerPersonToPay = String(totalPerPerson)
         
     }
     

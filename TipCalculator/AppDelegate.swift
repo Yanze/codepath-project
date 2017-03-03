@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.set(RecentCalculateData.instance.checkAmount, forKey: "checkAmount")
         defaults.set(RecentCalculateData.instance.tipPercentageIndex, forKey: "tipPercentageIndex")
         defaults.set(RecentCalculateData.instance.numberOfPeople, forKey: "numberOfPeople")
+        defaults.set(RecentCalculateData.instance.totalPerPersonToPay, forKey: "totalPerPersonToPay")
         defaults.set(NSDate().timeIntervalSince1970, forKey: "savedAt")
         defaults.synchronize()
 
