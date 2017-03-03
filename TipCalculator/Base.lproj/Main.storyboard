@@ -154,7 +154,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="ZRy-tq-e21">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Bdb-fM-L9f">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="Bdb-fM-L9f">
                             <connections>
                                 <segue destination="l8m-DI-2HQ" kind="show" id="qkH-xq-SyE"/>
                             </connections>
@@ -165,6 +165,7 @@
                         <outlet property="imgView" destination="1dh-zr-Ckr" id="vBC-hC-Guh"/>
                         <outlet property="numOfPeopleLabel" destination="dP4-9Y-YIP" id="EEi-Ce-aIf"/>
                         <outlet property="numOfPeopleSlider" destination="nZ3-tf-7T0" id="UH7-nv-AJe"/>
+                        <outlet property="settingButton" destination="Bdb-fM-L9f" id="wkI-69-nY8"/>
                         <outlet property="tipAmountLabel" destination="s6i-nM-tq9" id="PbO-DA-9gX"/>
                         <outlet property="tipLabel" destination="JCm-Qn-23G" id="HLf-Bc-yw5"/>
                         <outlet property="tipPercentageControl" destination="UWE-Q1-fx3" id="g7C-lj-0FS"/>
@@ -310,6 +311,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="settings" width="25" height="25"/>
         <image name="users-1" width="512" height="512"/>
     </resources>
 </document>

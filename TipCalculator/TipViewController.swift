@@ -24,6 +24,7 @@ class TipViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var totalPPerson: UILabel!
     
+    @IBOutlet weak var settingButton: UIBarButtonItem!
     
     
     let tipPercentages = [0.1, 0.15, 0.2, 0.25]
@@ -57,6 +58,11 @@ class TipViewController: UIViewController {
         tipLabel.textColor = .white
         totalLabel.textColor = .white
         totalPPerson.textColor = .white
+        
+        navigationController?.navigationBar.barTintColor = .darkGray
+        settingButton.image = settingButton.image?.withRenderingMode(.alwaysTemplate)
+        settingButton.tintColor = .white
+
     }
     
     func resetTheme() {
@@ -75,6 +81,11 @@ class TipViewController: UIViewController {
         tipLabel.textColor = .black
         totalLabel.textColor = .black
         totalPPerson.textColor = .black
+        
+        navigationController?.navigationBar.barTintColor = .white
+//        UINavigationBar.appearance().tintColor = .darkGray
+        settingButton.image = settingButton.image?.withRenderingMode(.alwaysTemplate)
+        settingButton.tintColor = .darkGray
     }
     
     func loadData() {

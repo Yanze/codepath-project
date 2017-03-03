@@ -18,6 +18,20 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
         super.viewDidLoad()
         navigationItem.title = "Settings"
         (UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool)! ? isDarkTheme.setOn(true, animated: true) : isDarkTheme.setOn(false, animated: true)
+        tableView.allowsSelection = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool)! {
+            navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            navigationController?.navigationBar.tintColor = UIColor.white
+            
+        }
+        else {
+            navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.darkGray]
+            navigationController?.navigationBar.tintColor = UIColor.darkGray
+        }
     }
     
     func createTextMessage() {
