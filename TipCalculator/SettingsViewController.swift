@@ -12,9 +12,12 @@ import Instabug
 
 class SettingsViewController: UITableViewController, MFMessageComposeViewControllerDelegate {
     
+    @IBOutlet weak var isDarkTheme: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Settings"
+        (UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool)! ? isDarkTheme.setOn(true, animated: true) : isDarkTheme.setOn(false, animated: true)
     }
     
     func createTextMessage() {
@@ -46,6 +49,22 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
     @IBAction func reportBug(_ sender: UIButton) {
         Instabug.invoke(with: IBGInvocationMode.newBug)
     }
+    
+    
+    @IBAction func switchToDarkTheme(_ sender: UISwitch) {
+        let defaults = UserDefaults.standard
+        if sender.isOn {
+            sender.setOn(true, animated: true)
+            defaults.set(true, forKey: "isDarkTheme")
+            return
+        }
+        else {
+            sender.setOn(false, animated: true)
+            defaults.set(false, forKey: "isDarkTheme")
+        }
+        
+    }
+    
     
     
     

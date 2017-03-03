@@ -17,6 +17,15 @@ class TipViewController: UIViewController {
     @IBOutlet weak var totalPerPersonLabel: UILabel!
     @IBOutlet weak var tipPercentageControl: UISegmentedControl!
     @IBOutlet weak var numOfPeopleSlider: UISlider!
+    
+    
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var totalPPerson: UILabel!
+    
+    
+    
     let tipPercentages = [0.1, 0.15, 0.2, 0.25]
 
     override func viewDidLoad() {
@@ -25,6 +34,47 @@ class TipViewController: UIViewController {
         loadData()
         animateTextfieldBgc()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UserDefaults.standard.object(forKey: "isDarkTheme") as! Bool  ? setDarkTheme() : resetTheme()
+    }
+    
+    func setDarkTheme() {
+        view.backgroundColor = .darkGray
+        checkAmountTextField.textColor = .white
+        numOfPeopleLabel.textColor = .white
+        tipAmountLabel.textColor = .white
+        totalToPayLabel.textColor = .white
+        totalPerPersonLabel.textColor = .white
+        tipPercentageControl.backgroundColor = .clear
+        tipPercentageControl.tintColor = .white
+        
+        imgView.image = imgView.image!.withRenderingMode(.alwaysTemplate)
+        imgView.tintColor = .white
+        
+        tipLabel.textColor = .white
+        totalLabel.textColor = .white
+        totalPPerson.textColor = .white
+    }
+    
+    func resetTheme() {
+        view.backgroundColor = .white
+        checkAmountTextField.textColor = .black
+        numOfPeopleLabel.textColor = .black
+        tipAmountLabel.textColor = .black
+        totalToPayLabel.textColor = .black
+        totalPerPersonLabel.textColor = .black
+        tipPercentageControl.backgroundColor = .clear
+        tipPercentageControl.tintColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        
+        imgView.image = imgView.image!.withRenderingMode(.alwaysTemplate)
+        imgView.tintColor = .black
+        
+        tipLabel.textColor = .black
+        totalLabel.textColor = .black
+        totalPPerson.textColor = .black
     }
     
     func loadData() {
@@ -100,9 +150,6 @@ class TipViewController: UIViewController {
             checkAmountTextField.textColor = .black
         }
     }
-    
-
-
   
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)

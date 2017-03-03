@@ -156,17 +156,21 @@
                     <navigationItem key="navigationItem" id="ZRy-tq-e21">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="Bdb-fM-L9f">
                             <connections>
-                                <segue destination="l8m-DI-2HQ" kind="show" id="5rd-b4-gTx"/>
+                                <segue destination="l8m-DI-2HQ" kind="show" id="qkH-xq-SyE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="checkAmountTextField" destination="5cl-bb-FkM" id="HKa-MN-GVd"/>
+                        <outlet property="imgView" destination="1dh-zr-Ckr" id="vBC-hC-Guh"/>
                         <outlet property="numOfPeopleLabel" destination="dP4-9Y-YIP" id="EEi-Ce-aIf"/>
                         <outlet property="numOfPeopleSlider" destination="nZ3-tf-7T0" id="UH7-nv-AJe"/>
                         <outlet property="tipAmountLabel" destination="s6i-nM-tq9" id="PbO-DA-9gX"/>
+                        <outlet property="tipLabel" destination="JCm-Qn-23G" id="HLf-Bc-yw5"/>
                         <outlet property="tipPercentageControl" destination="UWE-Q1-fx3" id="g7C-lj-0FS"/>
-                        <outlet property="totalPerPersonLabel" destination="egq-hG-EQ1" id="AhW-KW-mjJ"/>
+                        <outlet property="totalLabel" destination="jOm-He-Duz" id="w7l-13-bqo"/>
+                        <outlet property="totalPPerson" destination="IZm-SW-mIM" id="Xbl-tY-QMe"/>
+                        <outlet property="totalPerPersonLabel" destination="egq-hG-EQ1" id="NTJ-fv-mjj"/>
                         <outlet property="totalToPayLabel" destination="zxZ-bD-7pK" id="SHE-uQ-DFf"/>
                     </connections>
                 </viewController>
@@ -194,42 +198,80 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="udC-BI-7Mh" id="pup-Wa-1Tk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4b-MQ-5PL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <state key="normal" title="Ask for Payment via Message"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCH-bp-A91">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Asking for payment via Message"/>
                                                     <connections>
-                                                        <action selector="sendingTextMessage:" destination="l8m-DI-2HQ" eventType="touchUpInside" id="hKZ-tp-mrc"/>
+                                                        <action selector="sendingTextMessage:" destination="l8m-DI-2HQ" eventType="touchUpInside" id="Xeo-g9-HUX"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="hCH-bp-A91" secondAttribute="bottom" constant="2" id="a2L-9C-ZZo"/>
+                                                <constraint firstItem="hCH-bp-A91" firstAttribute="top" secondItem="pup-Wa-1Tk" secondAttribute="top" id="mIs-jl-4sV"/>
+                                                <constraint firstItem="hCH-bp-A91" firstAttribute="leading" secondItem="pup-Wa-1Tk" secondAttribute="leading" id="rp2-VX-fwC"/>
+                                                <constraint firstAttribute="trailing" secondItem="hCH-bp-A91" secondAttribute="trailing" id="ywp-GE-E3g"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="82" id="BUo-Ea-whw">
+                                        <rect key="frame" x="0.0" y="117" width="375" height="82"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BUo-Ea-whw" id="jeg-mw-mJY">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-SO-NAK">
+                                                    <rect key="frame" x="0.0" y="2" width="375" height="79"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Report Bug"/>
+                                                    <connections>
+                                                        <action selector="reportBug:" destination="l8m-DI-2HQ" eventType="touchUpInside" id="T2b-qe-aew"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nKK-SO-NAK" firstAttribute="leading" secondItem="jeg-mw-mJY" secondAttribute="leading" id="Ap3-hn-PfS"/>
+                                                <constraint firstAttribute="bottom" secondItem="nKK-SO-NAK" secondAttribute="bottom" id="OYd-NE-WbM"/>
+                                                <constraint firstItem="nKK-SO-NAK" firstAttribute="top" secondItem="jeg-mw-mJY" secondAttribute="top" constant="2" id="t9k-fL-xYg"/>
+                                                <constraint firstAttribute="trailing" secondItem="nKK-SO-NAK" secondAttribute="trailing" id="tjW-oq-kSj"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="hdh-Wj-FQZ">
+                            <tableViewSection id="rql-5a-pWL">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="82" id="reK-aQ-3Xi">
-                                        <rect key="frame" x="0.0" y="153" width="375" height="82"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="82" id="Hv8-qz-Otw">
+                                        <rect key="frame" x="0.0" y="235" width="375" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="reK-aQ-3Xi" id="P9P-LP-Vsu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hv8-qz-Otw" id="OJg-IM-8bM">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3u-ro-alQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <state key="normal" title="Report Bug"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="b23-vN-cTj">
+                                                    <rect key="frame" x="290" y="25" width="51" height="31"/>
                                                     <connections>
-                                                        <action selector="reportBug:" destination="l8m-DI-2HQ" eventType="touchUpInside" id="7od-NV-WEJ"/>
+                                                        <action selector="switchToDarkTheme:" destination="l8m-DI-2HQ" eventType="valueChanged" id="pgJ-Hl-eWF"/>
                                                     </connections>
-                                                </button>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtZ-DS-wVy">
+                                                    <rect key="frame" x="58" y="30" width="94" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="b23-vN-cTj" firstAttribute="centerY" secondItem="OJg-IM-8bM" secondAttribute="centerY" id="CTr-qJ-2Z9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="b23-vN-cTj" secondAttribute="trailing" constant="28" id="Iso-ui-3Xh"/>
+                                                <constraint firstItem="DtZ-DS-wVy" firstAttribute="leading" secondItem="OJg-IM-8bM" secondAttribute="leadingMargin" constant="50" id="MLA-OD-mpF"/>
+                                                <constraint firstItem="DtZ-DS-wVy" firstAttribute="centerY" secondItem="b23-vN-cTj" secondAttribute="centerY" id="m36-6i-gLZ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -240,6 +282,9 @@
                             <outlet property="delegate" destination="l8m-DI-2HQ" id="eYL-L2-egG"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="isDarkTheme" destination="b23-vN-cTj" id="gsn-pH-hng"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6x5-4A-K1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
