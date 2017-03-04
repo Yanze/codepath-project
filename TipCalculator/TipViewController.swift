@@ -18,15 +18,12 @@ class TipViewController: UIViewController {
     @IBOutlet weak var tipPercentageControl: UISegmentedControl!
     @IBOutlet weak var numOfPeopleSlider: UISlider!
     
-    
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var totalPPerson: UILabel!
     
     @IBOutlet weak var settingButton: UIBarButtonItem!
-    
-    
     let tipPercentages = [0.1, 0.15, 0.2, 0.25]
 
     override func viewDidLoad() {
@@ -34,13 +31,18 @@ class TipViewController: UIViewController {
         checkAmountTextField.becomeFirstResponder()
         loadData()
         animateTextfieldBgc()
-        resetTheme()
-        
+        toggleTipViewThemeColor()
+        Helpers.sharedInstance.toggleColorTheme(view: view, navigationController: navigationController!, tableView: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkAmountTextField.becomeFirstResponder()
+        toggleTipViewThemeColor()
+        Helpers.sharedInstance.toggleColorTheme(view: view, navigationController: navigationController!, tableView: nil)
+    }
+    
+    func toggleTipViewThemeColor() {
         guard let isDarkthem = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
             return
         }
@@ -48,7 +50,6 @@ class TipViewController: UIViewController {
     }
     
     func setDarkTheme() {
-        view.backgroundColor = .darkGray
         checkAmountTextField.textColor = .white
         numOfPeopleLabel.textColor = .white
         tipAmountLabel.textColor = .white
@@ -63,15 +64,13 @@ class TipViewController: UIViewController {
         tipLabel.textColor = .white
         totalLabel.textColor = .white
         totalPPerson.textColor = .white
-        
-        navigationController?.navigationBar.barTintColor = .darkGray
+
         settingButton.image = settingButton.image?.withRenderingMode(.alwaysTemplate)
         settingButton.tintColor = .white
         checkAmountTextField.textColor = .white
     }
     
     func resetTheme() {
-        view.backgroundColor = .white
         checkAmountTextField.textColor = .black
         numOfPeopleLabel.textColor = .black
         tipAmountLabel.textColor = .black
@@ -87,8 +86,6 @@ class TipViewController: UIViewController {
         totalLabel.textColor = .black
         totalPPerson.textColor = .black
         
-        navigationController?.navigationBar.barTintColor = .white
-        UINavigationBar.appearance().tintColor = .darkGray
         settingButton.image = settingButton.image?.withRenderingMode(.alwaysTemplate)
         settingButton.tintColor = .darkGray
         checkAmountTextField.textColor = .white
@@ -96,22 +93,18 @@ class TipViewController: UIViewController {
     
     func loadData() {
         let defaults = UserDefaults.standard
-        
         guard let amount = defaults.object(forKey: "checkAmount") else {
             return
         }
-        
         guard let tipPercentage = defaults.object(forKey: "tipPercentageIndex") else {
             return
         }
-        
         guard let numPeople = defaults.object(forKey: "numberOfPeople") else {
             return
         }
         guard let saveddAt = defaults.object(forKey: "savedAt") else {
             return
         }
-        
         let currentTime = Int(NSDate().timeIntervalSince1970)
         let willDiscardinMins = 10
         if ((currentTime - Int(saveddAt as! Double))/60) > willDiscardinMins {
@@ -136,7 +129,6 @@ class TipViewController: UIViewController {
             let totalPerPerson = total / (numPeople as! Double)
             RecentCalculateData.instance.totalPerPersonToPay = String(format: "%.2f", totalPerPerson)
             totalPerPersonLabel.text = String(format: "$%.2f", totalPerPerson)
-            
         }
     }
     
@@ -173,18 +165,14 @@ class TipViewController: UIViewController {
     }
     
     @IBAction func calculateTips(_ sender: AnyObject) {
-        
         let checkAmount = Double(checkAmountTextField.text!) ?? 0
         let numOfPeople = Int(numOfPeopleSlider.value)
-
         let tip = checkAmount * tipPercentages[tipPercentageControl.selectedSegmentIndex]
         let totalToPay = checkAmount + tip
-        
         let totalPerPerson = (tip + checkAmount) / Double(numOfPeople)
 
         tipAmountLabel.text = String(format: "$%.2f", tip)
         totalToPayLabel.text = String(format: "$%.2f", totalToPay)
-        
         totalPerPersonLabel.text = String(format: "$%.2f", totalPerPerson)
         numOfPeopleLabel.text = String(numOfPeople)
         
@@ -194,7 +182,6 @@ class TipViewController: UIViewController {
         RecentCalculateData.instance.tipPercentageIndex = tipPercentageControl.selectedSegmentIndex
         RecentCalculateData.instance.numberOfPeople = Int(numOfPeopleSlider.value)
         RecentCalculateData.instance.totalPerPersonToPay = String(totalPerPerson)
-        
     }
     
     func saveRecentValuesIntoUserDefault(checkAmount: String, tipPercentageIndex: String, numberOfPeople: String) {
@@ -202,8 +189,7 @@ class TipViewController: UIViewController {
         defaults.set(checkAmount, forKey: "checkAmount")
         defaults.set(tipPercentageIndex, forKey: "tipPercentageIndex")
         defaults.set(numberOfPeople, forKey: "numberOfPeople")
-        defaults.synchronize()
-        
+        defaults.synchronize() 
     }
 
 }
