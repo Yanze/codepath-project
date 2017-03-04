@@ -10,6 +10,7 @@ import UIKit
 
 class TipViewController: UIViewController {
     
+
     @IBOutlet weak var checkAmountTextField: UITextField!
     @IBOutlet weak var numOfPeopleLabel: UILabel!
     @IBOutlet weak var tipAmountLabel: UILabel!
@@ -22,17 +23,20 @@ class TipViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var totalPPerson: UILabel!
-    
+
     @IBOutlet weak var settingButton: UIBarButtonItem!
     let tipPercentages = [0.1, 0.15, 0.2, 0.25]
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkAmountTextField.becomeFirstResponder()
+        addRightPaddingToTextFields()
         loadData()
         animateTextfieldBgc()
         toggleTipViewThemeColor()
         Helpers.sharedInstance.toggleColorTheme(view: view, navigationController: navigationController!, tableView: nil)
+        checkAmountTextField.contentVerticalAlignment = .center
+        checkAmountTextField.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +44,17 @@ class TipViewController: UIViewController {
         checkAmountTextField.becomeFirstResponder()
         toggleTipViewThemeColor()
         Helpers.sharedInstance.toggleColorTheme(view: view, navigationController: navigationController!, tableView: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        checkAmountTextField.resignFirstResponder()
+    }
+    
+    func addRightPaddingToTextFields() {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: checkAmountTextField.frame.height))
+        checkAmountTextField.rightView = paddingView
+        checkAmountTextField.rightViewMode = UITextFieldViewMode.always
     }
     
     func toggleTipViewThemeColor() {
@@ -50,6 +65,8 @@ class TipViewController: UIViewController {
     }
     
     func setDarkTheme() {
+//        checkAmountTextField.backgroundColor = UIColor.white.withAlphaComponent(0.4)
+//        checkAmountTextField.textColor = .darkGray
         checkAmountTextField.textColor = .white
         numOfPeopleLabel.textColor = .white
         tipAmountLabel.textColor = .white
@@ -71,13 +88,15 @@ class TipViewController: UIViewController {
     }
     
     func resetTheme() {
+//        checkAmountTextField.backgroundColor = UIColor.white.withAlphaComponent(0.4)
+//        checkAmountTextField.textColor = .darkGray
         checkAmountTextField.textColor = .black
         numOfPeopleLabel.textColor = .black
         tipAmountLabel.textColor = .black
         totalToPayLabel.textColor = .black
         totalPerPersonLabel.textColor = .black
-        tipPercentageControl.backgroundColor = .clear
-        tipPercentageControl.tintColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        tipPercentageControl.backgroundColor = .white
+        tipPercentageControl.tintColor = .darkGray
         
         imgView.image = imgView.image!.withRenderingMode(.alwaysTemplate)
         imgView.tintColor = .black
@@ -156,7 +175,7 @@ class TipViewController: UIViewController {
             checkAmountTextField.textColor = .white
         default:
             checkAmountTextField.backgroundColor = .white
-            checkAmountTextField.textColor = .black
+            checkAmountTextField.textColor = .darkGray
         }
     }
   
