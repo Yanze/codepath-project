@@ -95,7 +95,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter amount" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kEc-Xo-AtU">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kEc-Xo-AtU">
                                 <rect key="frame" x="-1" y="64" width="376" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="pKa-1z-WTX"/>
@@ -143,9 +143,6 @@
                             <constraint firstItem="UWE-Q1-fx3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="118" id="wwu-Kz-iZw"/>
                             <constraint firstItem="egq-hG-EQ1" firstAttribute="trailing" secondItem="zxZ-bD-7pK" secondAttribute="trailing" id="yjm-e9-sV0"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Lwn-0W-GEc" appends="YES" id="IyD-ov-mWO"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="ZRy-tq-e21">
                         <barButtonItem key="rightBarButtonItem" image="settings" id="Bdb-fM-L9f">
@@ -170,11 +167,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Lwn-0W-GEc">
-                    <connections>
-                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="y3R-Ma-PPB"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1076" y="138.98050974512745"/>
         </scene>
@@ -193,7 +185,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="udC-BI-7Mh" id="pup-Wa-1Tk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCH-bp-A91">
@@ -229,7 +221,7 @@
                                         <rect key="frame" x="0.0" y="75" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BUo-Ea-whw" id="jeg-mw-mJY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-SO-NAK">
@@ -251,6 +243,7 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="nKK-SO-NAK" firstAttribute="leading" secondItem="jeg-mw-mJY" secondAttribute="leadingMargin" constant="65" id="GTN-ee-El8"/>
                                                 <constraint firstAttribute="bottom" secondItem="nKK-SO-NAK" secondAttribute="bottom" id="J4J-rk-qFz"/>
                                                 <constraint firstItem="nKK-SO-NAK" firstAttribute="leading" secondItem="Kzu-0j-2B9" secondAttribute="trailing" constant="20" id="JHo-eD-I5s"/>
                                                 <constraint firstItem="nKK-SO-NAK" firstAttribute="top" secondItem="jeg-mw-mJY" secondAttribute="top" constant="1" id="Lhm-vf-1gu"/>
@@ -266,10 +259,10 @@
                             <tableViewSection headerTitle="APPEARANCE" id="rql-5a-pWL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="Hv8-qz-Otw">
-                                        <rect key="frame" x="0.0" y="172" width="375" height="40"/>
+                                        <rect key="frame" x="0.0" y="171" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hv8-qz-Otw" id="OJg-IM-8bM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="b23-vN-cTj">

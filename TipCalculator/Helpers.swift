@@ -36,10 +36,12 @@ class Helpers: NSObject {
     }
     
     func toggleColorTheme(view: UIView, navigationController: UINavigationController, tableView: UITableView?) {
-        guard let isDarktheme = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
-            return
+        DispatchQueue.main.async {
+            guard let isDarktheme = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
+                return
+            }
+            isDarktheme ? self.setDarkTheme(view: view, navigationController: navigationController, tableView: tableView) : self.resetThemeColor(view: view, navigationController: navigationController, tableView: tableView)
         }
-        isDarktheme ? setDarkTheme(view: view, navigationController: navigationController, tableView: tableView) : resetThemeColor(view: view, navigationController: navigationController, tableView: tableView)
     }
     
     

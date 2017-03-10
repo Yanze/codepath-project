@@ -58,15 +58,16 @@ class TipViewController: UIViewController {
     }
     
     func toggleTipViewThemeColor() {
-        guard let isDarkthem = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
-            return
+        DispatchQueue.main.async {
+            guard let isDarkthem = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
+                return
+            }
+            isDarkthem  ? self.setDarkTheme() : self.resetTheme()
         }
-        isDarkthem  ? setDarkTheme() : resetTheme()
     }
     
+    
     func setDarkTheme() {
-//        checkAmountTextField.backgroundColor = UIColor.white.withAlphaComponent(0.4)
-//        checkAmountTextField.textColor = .darkGray
         checkAmountTextField.textColor = .white
         numOfPeopleLabel.textColor = .white
         tipAmountLabel.textColor = .white
@@ -85,11 +86,10 @@ class TipViewController: UIViewController {
         settingButton.image = settingButton.image?.withRenderingMode(.alwaysTemplate)
         settingButton.tintColor = .white
         checkAmountTextField.textColor = .white
+
     }
     
     func resetTheme() {
-//        checkAmountTextField.backgroundColor = UIColor.white.withAlphaComponent(0.4)
-//        checkAmountTextField.textColor = .darkGray
         checkAmountTextField.textColor = .black
         numOfPeopleLabel.textColor = .black
         tipAmountLabel.textColor = .black
@@ -108,6 +108,7 @@ class TipViewController: UIViewController {
         settingButton.image = settingButton.image?.withRenderingMode(.alwaysTemplate)
         settingButton.tintColor = .darkGray
         checkAmountTextField.textColor = .white
+
     }
     
     func loadData() {
@@ -179,9 +180,9 @@ class TipViewController: UIViewController {
         }
     }
   
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
+//    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+//        view.endEditing(true)
+//    }
     
     @IBAction func calculateTips(_ sender: AnyObject) {
         let checkAmount = Double(checkAmountTextField.text!) ?? 0
