@@ -22,9 +22,9 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] User can send a text message via the app to remind people pay back.
-- [x] In-App Bug Report feature
-- [x] Animate colors when user change tip percentage
+- [x] User can send a text message via the app to remind people to pay back.
+- [x] In-App Bug Report feature (INSTABUG Framework)
+- [x] Animated colors when user changes tip percentage
 
 ## Video Walkthrough 
 
