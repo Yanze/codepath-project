@@ -36,7 +36,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+1. Passing data between controllers: I used prepareForSegue function to pass data, but this is not very convenient for passing data back forth. So I decided to use a model to share data between viewControllers.
+2. Animation: I don't feel very comfortable with animations, need to spent some time on this topic.
 
 ## License
 
