@@ -10,7 +10,6 @@ import UIKit
 
 class TipViewController: UIViewController {
     
-
     @IBOutlet weak var checkAmountTextField: UITextField!
     @IBOutlet weak var numOfPeopleLabel: UILabel!
     @IBOutlet weak var tipAmountLabel: UILabel!
@@ -26,6 +25,7 @@ class TipViewController: UIViewController {
 
     @IBOutlet weak var settingButton: UIBarButtonItem!
     let tipPercentages = [0.1, 0.15, 0.2, 0.25]
+    var selectedIndex = 0
 
 
     override func viewDidLoad() {
@@ -44,6 +44,12 @@ class TipViewController: UIViewController {
         checkAmountTextField.becomeFirstResponder()
         toggleTipViewThemeColor()
         Helpers.sharedInstance.toggleColorTheme(view: view, navigationController: navigationController!, tableView: nil)
+        if let index = RecentCalculateData.instance.tipPercentageIndex {
+            tipPercentageControl.selectedSegmentIndex = index
+            caculateTips()
+        }
+
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -179,18 +185,15 @@ class TipViewController: UIViewController {
             checkAmountTextField.textColor = .darkGray
         }
     }
-  
-//    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-//        view.endEditing(true)
-//    }
     
-    @IBAction func calculateTips(_ sender: AnyObject) {
+    func caculateTips() {
         let checkAmount = Double(checkAmountTextField.text!) ?? 0
         let numOfPeople = Int(numOfPeopleSlider.value)
+        
         let tip = checkAmount * tipPercentages[tipPercentageControl.selectedSegmentIndex]
         let totalToPay = checkAmount + tip
         let totalPerPerson = (tip + checkAmount) / Double(numOfPeople)
-
+        
         tipAmountLabel.text = String(format: "$%.2f", tip)
         totalToPayLabel.text = String(format: "$%.2f", totalToPay)
         totalPerPersonLabel.text = String(format: "$%.2f", totalPerPerson)
@@ -204,12 +207,8 @@ class TipViewController: UIViewController {
         RecentCalculateData.instance.totalPerPersonToPay = String(totalPerPerson)
     }
     
-    func saveRecentValuesIntoUserDefault(checkAmount: String, tipPercentageIndex: String, numberOfPeople: String) {
-        let defaults = UserDefaults.standard
-        defaults.set(checkAmount, forKey: "checkAmount")
-        defaults.set(tipPercentageIndex, forKey: "tipPercentageIndex")
-        defaults.set(numberOfPeople, forKey: "numberOfPeople")
-        defaults.synchronize() 
+    @IBAction func calculateTips(_ sender: AnyObject) {
+        caculateTips()
     }
 
 }

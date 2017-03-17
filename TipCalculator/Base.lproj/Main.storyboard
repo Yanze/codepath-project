@@ -147,7 +147,7 @@
                     <navigationItem key="navigationItem" id="ZRy-tq-e21">
                         <barButtonItem key="rightBarButtonItem" image="settings" id="Bdb-fM-L9f">
                             <connections>
-                                <segue destination="l8m-DI-2HQ" kind="show" id="qkH-xq-SyE"/>
+                                <segue destination="l8m-DI-2HQ" kind="show" identifier="SettingsSegue" id="qkH-xq-SyE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -181,11 +181,39 @@
                         <sections>
                             <tableViewSection id="doP-7y-FAy">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="udC-BI-7Mh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="yvE-qd-5oa">
                                         <rect key="frame" x="0.0" y="35" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yvE-qd-5oa" id="XY3-gt-ry7">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8Oo-oW-4pu">
+                                                    <rect key="frame" x="32" y="6" width="308" height="29"/>
+                                                    <segments>
+                                                        <segment title="10%"/>
+                                                        <segment title="15%"/>
+                                                        <segment title="20%"/>
+                                                        <segment title="25%"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="tipSegmentController:" destination="l8m-DI-2HQ" eventType="valueChanged" id="21x-bT-4zR"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8Oo-oW-4pu" firstAttribute="top" secondItem="XY3-gt-ry7" secondAttribute="top" constant="6" id="JIR-6M-BRf"/>
+                                                <constraint firstAttribute="bottom" secondItem="8Oo-oW-4pu" secondAttribute="bottom" constant="6" id="W1d-JA-gGy"/>
+                                                <constraint firstAttribute="trailing" secondItem="8Oo-oW-4pu" secondAttribute="trailing" constant="35" id="evZ-zZ-ih8"/>
+                                                <constraint firstItem="8Oo-oW-4pu" firstAttribute="leading" secondItem="XY3-gt-ry7" secondAttribute="leading" constant="32" id="maN-Xm-Bbk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="udC-BI-7Mh">
+                                        <rect key="frame" x="0.0" y="75" width="375" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="udC-BI-7Mh" id="pup-Wa-1Tk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCH-bp-A91">
@@ -218,10 +246,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="BUo-Ea-whw">
-                                        <rect key="frame" x="0.0" y="75" width="375" height="40"/>
+                                        <rect key="frame" x="0.0" y="115" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BUo-Ea-whw" id="jeg-mw-mJY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-SO-NAK">
@@ -259,10 +287,10 @@
                             <tableViewSection headerTitle="APPEARANCE" id="rql-5a-pWL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="Hv8-qz-Otw">
-                                        <rect key="frame" x="0.0" y="171" width="375" height="40"/>
+                                        <rect key="frame" x="0.0" y="212" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hv8-qz-Otw" id="OJg-IM-8bM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="b23-vN-cTj">
@@ -309,6 +337,7 @@
                         <outlet property="isDarkTheme" destination="b23-vN-cTj" id="gsn-pH-hng"/>
                         <outlet property="reportBug" destination="nKK-SO-NAK" id="6XF-ki-ClS"/>
                         <outlet property="reportBugImgView" destination="Kzu-0j-2B9" id="dPL-P4-EeE"/>
+                        <outlet property="tipPercentageControl" destination="8Oo-oW-4pu" id="7Tv-yF-4pm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6x5-4A-K1y" userLabel="First Responder" sceneMemberID="firstResponder"/>

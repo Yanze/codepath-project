@@ -17,7 +17,9 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
     @IBOutlet weak var askingPayBack: UIButton!
     @IBOutlet weak var reportBug: UIButton!
     @IBOutlet weak var darkThemeLabel: UILabel!
-    
+    @IBOutlet weak var tipPercentageControl: UISegmentedControl!
+    let tipPercentages = [0.1, 0.15, 0.2, 0.25]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +28,27 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
         reportBugImgViewCornerRadius()
         Helpers.sharedInstance.toggleColorTheme(view: view, navigationController: navigationController!, tableView: tableView)
         togglecomponentsBgc()
+        
+        if let index = RecentCalculateData.instance.tipPercentageIndex {
+            tipPercentageControl.selectedSegmentIndex = index
+        }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Helpers.sharedInstance.toggleColorTheme(view: view, navigationController: navigationController!, tableView: tableView)
         togglecomponentsBgc()
+        if let index = RecentCalculateData.instance.tipPercentageIndex {
+            tipPercentageControl.selectedSegmentIndex = index
+        }
     }
+    
+    @IBAction func tipSegmentController(_ sender: UISegmentedControl) {
+        RecentCalculateData.instance.tipPercentageIndex = tipPercentageControl.selectedSegmentIndex
+    }
+    
     
     func setupTheme() {
         navigationItem.title = "Settings"
@@ -110,13 +126,19 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
             askingPayBack.setTitleColor(.white, for: .normal)
             reportBug.setTitleColor(.white, for: .normal)
             darkThemeLabel.textColor = .white
+            tipPercentageControl.backgroundColor = .clear
+            tipPercentageControl.tintColor = .white
         }
         else {
             askingPayBack.setTitleColor(.darkGray, for: .normal)
             reportBug.setTitleColor(.darkGray, for: .normal)
             darkThemeLabel.textColor = .darkGray
+            tipPercentageControl.backgroundColor = .white
+            tipPercentageControl.tintColor = .darkGray
         }
     }
+    
+
     
     
 }
