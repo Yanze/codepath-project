@@ -30,11 +30,12 @@ class TipViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        toggleTipViewThemeColor()
+        Helpers.sharedInstance.toggleColorTheme(view: view, navigationController: navigationController!, tableView: nil)
         addRightPaddingToTextFields()
         loadData()
         animateTextfieldBgc()
-        toggleTipViewThemeColor()
-        Helpers.sharedInstance.toggleColorTheme(view: view, navigationController: navigationController!, tableView: nil)
+ 
         checkAmountTextField.contentVerticalAlignment = .center
         checkAmountTextField.becomeFirstResponder()
     }
@@ -64,12 +65,13 @@ class TipViewController: UIViewController {
     }
     
     func toggleTipViewThemeColor() {
-        DispatchQueue.main.async {
-            guard let isDarkthem = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
-                return
-            }
-            isDarkthem  ? self.setDarkTheme() : self.resetTheme()
+//        DispatchQueue.main.async {
+//            
+//        }
+        guard let isDarkthem = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
+            return
         }
+        isDarkthem  ? self.setDarkTheme() : self.resetTheme()
     }
     
     
@@ -92,6 +94,9 @@ class TipViewController: UIViewController {
         settingButton.image = settingButton.image?.withRenderingMode(.alwaysTemplate)
         settingButton.tintColor = .white
         checkAmountTextField.textColor = .white
+        
+        let textFieldAppearance = UITextField.appearance()
+        textFieldAppearance.keyboardAppearance = .dark
 
     }
     
@@ -114,6 +119,9 @@ class TipViewController: UIViewController {
         settingButton.image = settingButton.image?.withRenderingMode(.alwaysTemplate)
         settingButton.tintColor = .darkGray
         checkAmountTextField.textColor = .white
+        
+        let textFieldAppearance = UITextField.appearance()
+        textFieldAppearance.keyboardAppearance = .default
 
     }
     
