@@ -32,7 +32,10 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
         if let index = RecentCalculateData.instance.tipPercentageIndex {
             tipPercentageControl.selectedSegmentIndex = index
         }
-        
+        if UserDefaults.standard.object(forKey: "isDarkTheme") == nil {
+            Helpers.sharedInstance.resetThemeColor(view: view, navigationController: navigationController!, tableView: tableView)
+            lightTheme()
+        }
         
     }
     
@@ -130,15 +133,17 @@ class SettingsViewController: UITableViewController, MFMessageComposeViewControl
             tipPercentageControl.tintColor = .white
         }
         else {
-            askingPayBack.setTitleColor(.darkGray, for: .normal)
-            reportBug.setTitleColor(.darkGray, for: .normal)
-            darkThemeLabel.textColor = .darkGray
-            tipPercentageControl.backgroundColor = .white
-            tipPercentageControl.tintColor = .darkGray
+            lightTheme()
         }
     }
     
-
+    func lightTheme() {
+        askingPayBack.setTitleColor(.darkGray, for: .normal)
+        reportBug.setTitleColor(.darkGray, for: .normal)
+        darkThemeLabel.textColor = .darkGray
+        tipPercentageControl.backgroundColor = .white
+        tipPercentageControl.tintColor = .darkGray
+    }
     
     
 }

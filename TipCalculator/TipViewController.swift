@@ -38,6 +38,10 @@ class TipViewController: UIViewController {
  
         checkAmountTextField.contentVerticalAlignment = .center
         checkAmountTextField.becomeFirstResponder()
+        
+        if UserDefaults.standard.object(forKey: "isDarkTheme") == nil {
+            resetTheme()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,9 +69,6 @@ class TipViewController: UIViewController {
     }
     
     func toggleTipViewThemeColor() {
-//        DispatchQueue.main.async {
-//            
-//        }
         guard let isDarkthem = UserDefaults.standard.object(forKey: "isDarkTheme") as? Bool else {
             return
         }
